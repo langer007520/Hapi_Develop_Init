@@ -1,0 +1,25 @@
+{
+  "name": "hapi_demo1",
+  "version": "1.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@hapi/hapi": "^20.2.2",
+    "dotenv": "^16.0.2",
+    "ioredis": "^5.2.3",
+    "lodash": "^4.17.21",
+    "redlock": "^5.0.0-beta.2"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.5.0",
+    "@types/hapi__hapi": "^20.0.12",
+    "@types/lodash": "^4.14.185",
+    "@types/node": "^18.7.16",
+    "nodemon": "^2.0.19",
+    "typescript": "^4.8.3"
+  },
+  "scripts": {
+    "build": "tsc && cp .env ./out && cp package.json ./out",
+    "dev": "nodemon -e ts --watch src --exec 'yarn build && node out/index.js'"
+  }
+}
