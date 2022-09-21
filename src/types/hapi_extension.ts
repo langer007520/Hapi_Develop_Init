@@ -2,7 +2,7 @@
  * 给hapi添加一个自定义路由函数,主要是为了提供类型安全
  */
 import { Server, Util, Lifecycle, ResponseToolkit, RequestApplicationState, RequestAuth, RequestEvents, RequestLog, RequestOrig, PluginsStates, ResponseObject, RequestQuery, RequestRoute, ResponseValue, RouteOptionsAccess, RouteOptionsValidate, RouteOptionsApp, RouteOptionsCache, RouteCompressionEncoderSettings, RouteOptionsCors, Json, RouteOptionsResponse, RouteOptionsSecure, RouteRequestExtType, RouteExtObject, RouteOptionsPayload, PluginSpecificConfiguration, RouteOptionsPreArray, RouteOptionsResponseSchema } from '@hapi/hapi';
-import { server } from '../hapi_server';
+import { server } from '../service/hapi_server';
 import type Podium from '@hapi/podium';
 import type stream from 'stream';
 import type { Boom } from '@hapi/boom';
