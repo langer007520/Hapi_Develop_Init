@@ -1,9 +1,8 @@
 // process环境初始化
 import DotEnv from 'dotenv';
 DotEnv.config();
-import { init, server } from "./service/hapi_server";
+import { init } from "./service/hapi_server";
 import "./types/hapi_extension";
-import { redis } from './service/redis_server';
 import { register as routeRegistry } from "./routes/test";
 
 

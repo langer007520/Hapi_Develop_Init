@@ -611,9 +611,12 @@ type ParsePartial<T extends string> = T extends `${infer R1}?` ? Partial<Record<
  * 解析payload类型安全
  */
 type ParsePayload<T> = T extends undefined ? (stream.Readable | Buffer | string | object) : T;
+/**
+ * 解析Query
+ */
 type ParseQuery<T> = T extends undefined ? (stream.Readable | Buffer | string | object) : T;
+
 /**
  * 指定某个键为必选
  */
-
 type RequiredKey<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>

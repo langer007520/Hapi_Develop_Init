@@ -5,8 +5,8 @@
 declare namespace NodeJS {
     interface ProcessEnv {
         readonly MODE: "production" | 'development'
-        readonly APP_PORT?: number
+        readonly APP_PORT?: string
         readonly REDIS_HOST?: string
-        readonly REDIS_PORT?: number
+        readonly REDIS_PORT?: string
     }
 }

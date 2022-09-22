@@ -25,8 +25,7 @@ export const register = async () => {
                 },
                 payload: {
                     nihao: 'lkjdsf'
-                },
-
+                }
             }
         }
     })
