@@ -8,7 +8,7 @@ import type stream from 'stream';
 import type { Boom } from '@hapi/boom';
 import type http from 'http';
 import type url from 'url';
-import type { ValidationOptions } from 'joi';
+import type { AnySchema, ValidationOptions } from 'joi';
 
 declare module '@hapi/hapi' {
     interface Server {
@@ -600,6 +600,11 @@ interface CustomRouteOptionsValidate<Params, Payload, Query> {
      */
     state?: RouteOptionsResponseSchema | undefined;
 }
+
+/**
+ * 解析AnySchema为原始对象
+ */
+type ParseSchema<T> = T extends AnySchema<infer R> ? R : undefined;
 /**
  * 解析Path类型安全
  * 有几种状态: 可选? , 数组*2
@@ -610,11 +615,11 @@ type ParsePartial<T extends string> = T extends `${infer R1}?` ? Partial<Record<
 /**
  * 解析payload类型安全
  */
-type ParsePayload<T> = T extends undefined ? (stream.Readable | Buffer | string | object) : T;
+type ParsePayload<T> = T extends undefined ? (stream.Readable | Buffer | string | object) : ParseSchema<T>;
 /**
  * 解析Query
  */
-type ParseQuery<T> = T extends undefined ? (stream.Readable | Buffer | string | object) : T;
+type ParseQuery<T> = T extends undefined ? (stream.Readable | Buffer | string | object) : ParseSchema<T>;
 
 /**
  * 指定某个键为必选

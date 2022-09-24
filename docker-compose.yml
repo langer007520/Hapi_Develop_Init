@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  app:
+    image: keymetrics/pm2
+    container_name: node
+    links:
+      - db
+      - redis
+    environment:
+      - REDIS_HOST=redis
+    # working_dir
+  redis:
+    image: docker.io/bitnami/redis:7.0
+    container_name: redis
+  db:
+    image: docker.io/bitnami/mysql:8.0
+    container_name: db

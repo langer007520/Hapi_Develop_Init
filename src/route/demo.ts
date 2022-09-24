@@ -1,7 +1,8 @@
+/**
+ * 路由 Demo
+ */
 import { server } from "../service/hapi_server";
-import { redlock } from "../utils/redlock";
-import { setTimeout } from 'timers/promises'
-import { redis } from "../service/redis_server";
+import { PersonSchema, WalletSchema } from "../validate/schema/demo";
 
 export const register = async () => {
 
@@ -9,23 +10,19 @@ export const register = async () => {
         method: "GET",
         path: "/{test}",
         handler: async (req, h) => {
-
+            // req.payload.wallet?.eur
             console.log(req.params.test);
-            console.log(req.payload.nihao);
-
-            console.log(req.query.test1);
-
+            // console.log(req.payload.nihao);
+            req.payload.job?.businessName
+            console.log(req.query.eur);
+            req.server.app.hello
             return 'ok';
         },
         options: {
             description: "测试案例",
             validate: {
-                query: {
-                    test1: "test",
-                },
-                payload: {
-                    nihao: 'lkjdsf'
-                }
+                payload: PersonSchema,
+                query: WalletSchema
             }
         }
     })

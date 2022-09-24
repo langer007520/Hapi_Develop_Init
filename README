@@ -1,2 +1,32 @@
 #  Hapi 开发
-# 
+## 文件分类
+1. model 模型文件夹: 根据应用抽象的对象, 模型用于Prima中数据结构的映射
+2. controller 控制器文件夹: 用于路由对象的抽象.比如前端需要的 user接口
+3. public 公共文件夹: 存放静态文件
+4. route 路由文件夹: 如果不使用plugin插件来分割逻辑的话, 路由就放到这里
+5. service 服务文件夹: 比如 redis, hapi.server, prisma-client等外部服务都放在这里
+6. util 工具集文件夹: 内部拥有 nodejs实现的redlock红锁
+7. types 类型扩展文件夹: 存放typescript的.d.ts类型扩展文件
+8. plugin 插件文件夹: 存放各类插件
+9. validate 验证器文件夹: 存放写的各种验证器
+10. route.ts 路由接口文件: 如果简单的应用, 把所有接口放入这里就行了
+11. .env 环境文件: 配合dotenv写入到环境中, 需要配合types/env.d.ts来编写环境类型安全
+12. docker-compose.yml docker容器化配置
+13. prisma 数据库Shema文件
+
+## 环境配置
+1. 开发时配置根目录.env文件, 生产时直接修改docker-compose.yml中的环境即可
+
+## 开发依赖
+1. Hapi     Rest Api 开发框架
+2. Typescript  javascript超集
+3. Joi      验证库
+4. Nodejs   基础环境
+5. lodash   工具库
+6. redlock  缓存锁
+7. ioredis  redis工具(缓存)
+8. joi-to-typescript 生成Joi schema 验证器到typescript 类型
+9. nodemon 开发者自动重启进程, 方便开发
+10. faker   生成一些伪数据
+11. prisma  数据库工具库
+12. docker  容器化方案

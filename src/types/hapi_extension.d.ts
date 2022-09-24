@@ -1,7 +1,7 @@
 /**
  * Hapi 模块的类型扩展
  */
-import { ServerOptionsApp, ServerApplicationState } from '@hapi/hapi';
+import { ServerOptionsApp, ServerApplicationState, ServerMethods } from '@hapi/hapi';
 
 declare module "@hapi/hapi" {
     /**
@@ -24,4 +24,3 @@ declare module "@hapi/hapi" {
     }
 
 }
-

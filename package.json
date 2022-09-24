@@ -5,9 +5,12 @@
   "license": "MIT",
   "dependencies": {
     "@hapi/hapi": "^20.2.2",
+    "@prisma/client": "^4.3.1",
     "dotenv": "^16.0.2",
     "ioredis": "^5.2.3",
+    "joi": "^17.6.1",
     "lodash": "^4.17.21",
+    "prisma": "^4.3.1",
     "redlock": "^5.0.0-beta.2"
   },
   "devDependencies": {
@@ -15,11 +18,23 @@
     "@types/hapi__hapi": "^20.0.12",
     "@types/lodash": "^4.14.185",
     "@types/node": "^18.7.16",
+    "joi-to-typescript": "^4.0.5",
     "nodemon": "^2.0.19",
     "typescript": "^4.8.3"
   },
+  "prisma": {
+    "schema": "./src/prisma/schema.prisma",
+    "seed": "ts-node ./src/prisma/seed.ts"
+  },
   "scripts": {
-    "build": "tsc && cp .env ./out && cp package.json ./out",
-    "dev": "nodemon -e ts --watch src --exec 'yarn build && node out/index.js'"
+    "build": "tsc && cp .env ./out && cp ./src/prisma/schema.prisma ./out && cp package.json ./out",
+    "dev": "nodemon -e ts --watch src --ignore src/prisma  --delay 1.5 --exec 'yarn build && node out/index.js'",
+    "prisma-dev": "nodemon -e prisma --watch src/prisma --exec 'yarn generate'",
+    "joi-dev": "nodemon -e ts --watch src/validate/schema --exec 'ts-node ./src/util/joi-to-typescript.ts'",
+    "migrate": "prisma migrate dev --name dev",
+    "reset": "prisma migrate reset",
+    "studio": "prisma studio",
+    "generate": "prisma generate",
+    "all": "yarn prisma-dev & yarn joi-dev"
   }
 }
